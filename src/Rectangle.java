@@ -1,8 +1,5 @@
 public class Rectangle extends Shape {
     public Point p1, p2;
-    public String name;
-    public String borderColor;
-    public String fillColor;
 
     public Rectangle() {
         this.p1 = new Point();
@@ -20,10 +17,12 @@ public class Rectangle extends Shape {
         this.fillColor = fillColor;
     }
 
+    @Override
     public void draw() { // yet just a message
         System.out.format("draw %s from %s to %s.\n", name, p1.toString(), p2.toString());
     }
 
+    @Override
     public void move(int xMove, int yMove) {
         p1.setX(p1.getX() + xMove);
         p1.setY(p1.getY() + yMove);
@@ -31,10 +30,12 @@ public class Rectangle extends Shape {
         p2.setY(p2.getY() + yMove);
     }
 
+    @Override
     public void erase() { // yet just a message
         System.out.format("erase %s\n", name);
     }
 
+    @Override
     public boolean hit(Point p) {
         boolean b1 = Math.min(p1.getX(), p2.getX()) <= p.getX();
         boolean b2 = Math.max(p1.getX(), p2.getX()) >= p.getX();
