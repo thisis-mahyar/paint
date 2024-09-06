@@ -136,4 +136,8 @@ public class PaintingArea {
         if (r != null)
             r.move(xMove, yMove);
     }
+
+    public void status() {
+        System.out.format("Line = %d, Circle = %d, Rectangle = %d\n", lineArr.length, circleArr.length, rectArr.length);
+    }
 }
