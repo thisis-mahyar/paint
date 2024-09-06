@@ -1,4 +1,4 @@
-public class Circle {
+public class Circle extends Shape {
     public Point center;
     public int radius;
     public String name;

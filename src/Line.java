@@ -1,4 +1,4 @@
-public class Line {
+public class Line extends Shape {
     public Point p1, p2;
     public String name;
     public String borderColor;
