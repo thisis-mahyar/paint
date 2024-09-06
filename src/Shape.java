@@ -1,22 +1,24 @@
+import java.awt.*;
+
 public abstract class Shape {
     public String name;
-    public String borderColor;
-    public String fillColor;
+    public Color borderColor;
+    public Color fillColor;
     public boolean isFilled;
 
     public Shape() {
-        this.borderColor = "Black";
-        this.fillColor = "White";
+        this.borderColor = Color.BLACK;
+        this.fillColor = Color.WHITE;
         this.isFilled = false;
     }
 
-    public Shape(String borderColor, String fillColor) {
+    public Shape(Color borderColor, Color fillColor) {
         this.borderColor = borderColor;
         this.fillColor = fillColor;
         this.isFilled = false;
     }
 
-    public abstract void draw();
+    public abstract void draw(Graphics g);
 
     public abstract void move(int xMove, int yMove);
 

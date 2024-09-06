@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class Oval extends Shape {
     public Point center;
     public int axis1, axis2;
@@ -7,11 +9,11 @@ public class Oval extends Shape {
         this.axis1 = 1;
         this.axis2 = 1;
         this.name = "oval-" + ((int) (Math.random() * 1000)); // a random id
-        this.borderColor = "Black";
-        this.fillColor = "White";
+        this.borderColor = Color.BLACK;
+        this.fillColor = Color.WHITE;
     }
 
-    public Oval(Point center, int axis1, int axis2, String borderColor, String fillColor) {
+    public Oval(Point center, int axis1, int axis2, Color borderColor, Color fillColor) {
         this.center = center;
         this.axis1 = axis1;
         this.axis2 = axis2;
@@ -21,7 +23,7 @@ public class Oval extends Shape {
     }
 
     @Override
-    public void draw() { // yet just a message
+    public void draw(Graphics g) { // yet just a message
         System.out.format("draw %s from %s with axis1 = %d, axis2 = %d.\n", name, center.toString(), axis1, axis2);
     }
 

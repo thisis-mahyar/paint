@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,11 +8,11 @@ public class Polygon extends Shape {
     public Polygon() {
         this.points = new ArrayList<>();
         this.name = "polygon-" + ((int) (Math.random() * 1000)); // a random id
-        this.borderColor = "Black";
-        this.fillColor = "White";
+        this.borderColor = Color.BLACK;
+        this.fillColor = Color.WHITE;
     }
 
-    public Polygon(List<Point> points, String borderColor, String fillColor) {
+    public Polygon(List<Point> points, Color borderColor, Color fillColor) {
         this.points = points;
         this.name = "polygon-" + ((int) (Math.random() * 1000)); // a random id
         this.borderColor = borderColor;
@@ -19,7 +20,7 @@ public class Polygon extends Shape {
     }
 
     @Override
-    public void draw() { // yet just a message
+    public void draw(Graphics g) { // yet just a message
         System.out.format("draw %s with %d points.\n", name, points.size());
     }
 

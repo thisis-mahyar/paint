@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class Line extends Shape {
     public Point p1, p2;
 
@@ -5,10 +7,10 @@ public class Line extends Shape {
         this.p1 = new Point();
         this.p2 = new Point();
         this.name = "line-" + ((int) (Math.random() * 1000)); // a random id
-        this.borderColor = "Black";
+        this.borderColor = Color.BLACK;
     }
 
-    public Line(Point p1, Point p2, String borderColor) {
+    public Line(Point p1, Point p2, Color borderColor) {
         this.p1 = p1;
         this.p2 = p2;
         this.name = "line-" + ((int) (Math.random() * 1000)); // a random id
@@ -16,7 +18,7 @@ public class Line extends Shape {
     }
 
     @Override
-    public void draw() { // yet just a message
+    public void draw(Graphics g) { // yet just a message
         System.out.format("draw %s from %s to %s.\n", name, p1.toString(), p2.toString());
     }
 

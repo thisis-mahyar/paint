@@ -1,13 +1,15 @@
+import java.awt.*;
+
 public class Square extends Rectangle {
     public Square() {
         this.p1 = new Point();
         this.p2 = new Point();
         this.name = "square-" + ((int) (Math.random() * 1000)); // a random id
-        this.borderColor = "Black";
-        this.fillColor = "White";
+        this.borderColor = Color.BLACK;
+        this.fillColor = Color.WHITE;
     }
 
-    public Square(Point p1, Point p2, String borderColor, String fillColor) {
+    public Square(Point p1, Point p2, Color borderColor, Color fillColor) {
         this.p1 = p1;
         this.p2 = p2;
         makeSidesEqual(p1, p2);

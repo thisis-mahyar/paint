@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class Rectangle extends Shape {
     public Point p1, p2;
 
@@ -5,11 +7,11 @@ public class Rectangle extends Shape {
         this.p1 = new Point();
         this.p2 = new Point();
         this.name = "rectangle-" + ((int) (Math.random() * 1000)); // a random id
-        this.borderColor = "Black";
-        this.fillColor = "White";
+        this.borderColor = Color.BLACK;
+        this.fillColor = Color.WHITE;
     }
 
-    public Rectangle(Point p1, Point p2, String borderColor, String fillColor) {
+    public Rectangle(Point p1, Point p2, Color borderColor, Color fillColor) {
         this.p1 = p1;
         this.p2 = p2;
         this.name = "rectangle-" + ((int) (Math.random() * 1000)); // a random id
@@ -18,7 +20,7 @@ public class Rectangle extends Shape {
     }
 
     @Override
-    public void draw() { // yet just a message
+    public void draw(Graphics g) { // yet just a message
         System.out.format("draw %s from %s to %s.\n", name, p1.toString(), p2.toString());
     }
 

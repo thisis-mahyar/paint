@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.Scanner;
 import static java.lang.Math.random;
 
@@ -14,11 +15,11 @@ public class Main {
             int r = (int) (random() * 3);
 
             if (r == 0)
-                s = new Line(new Point((int) (random() * 1000), (int) (random() * 1000)), new Point((int) (random() * 1000), (int) (random() * 1000)), "Black");
+                s = new Line(new Point((int) (random() * 1000), (int) (random() * 1000)), new Point((int) (random() * 1000), (int) (random() * 1000)), Color.BLACK);
             else if (r == 1)
-                s = new Circle(new Point((int) (random() * 500), (int) (random() * 500)), (int) (random() * 100), "Black", "Yellow");
+                s = new Circle(new Point((int) (random() * 500), (int) (random() * 500)), (int) (random() * 100), Color.BLACK, Color.YELLOW);
             else if (r == 2)
-                s = new Rectangle(new Point((int) (random() * 1000), (int) (random() * 1000)), new Point((int) (random() * 1000), (int) (random() * 1000)), "Black", "Violet");
+                s = new Rectangle(new Point((int) (random() * 1000), (int) (random() * 1000)), new Point((int) (random() * 1000), (int) (random() * 1000)), Color.BLACK, Color.MAGENTA);
 
             paintingArea.addShape(s);
         }
