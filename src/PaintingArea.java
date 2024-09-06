@@ -67,4 +67,28 @@ public class PaintingArea {
 
         return false;
     }
+
+    public int indexOfLine(Line l) {
+        for (int i = 0; i < lineArr.length; i++)
+            if (lineArr[i] == l)
+                return i;
+
+        return -1;
+    }
+
+    public int indexOfCircle(Circle c) {
+        for (int i = 0; i < circleArr.length; i++)
+            if (circleArr[i] == c)
+                return i;
+
+        return -1;
+    }
+
+    public int indexOfRectangle(Rectangle r) {
+        for (int i = 0; i < rectArr.length; i++)
+            if (rectArr[i] == r)
+                return i;
+
+        return -1;
+    }
 }
