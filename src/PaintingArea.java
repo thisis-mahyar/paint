@@ -91,4 +91,28 @@ public class PaintingArea {
 
         return -1;
     }
+
+    public Line getLineByPoint(Point p) {
+        for (Line l : lineArr)
+            if (l.hit(p))
+                return l;
+
+        return null;
+    }
+
+    public Circle getCircleByPoint(Point p) {
+        for (Circle c : circleArr)
+            if (c.hit(p))
+                return c;
+
+        return null;
+    }
+
+    public Rectangle getRectangleByPoint(Point p) {
+        for (Rectangle r : rectArr)
+            if (r.hit(p))
+                return r;
+
+        return null;
+    }
 }
