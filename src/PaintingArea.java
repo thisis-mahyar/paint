@@ -1,42 +1,32 @@
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PaintingArea {
-    public Shape[] shapeArr;
+    List<Shape> shapeList;
 
     public PaintingArea() {
-        shapeArr = new Shape[0];
+        shapeList = new ArrayList<>();
     }
 
     public void addShape(Shape s) {
-        shapeArr = Arrays.copyOf(shapeArr, shapeArr.length + 1);
-        shapeArr[shapeArr.length - 1] = s;
-
+        shapeList.add(s);
         s.draw();
     }
 
     public boolean removeShape(int index) {
-        if (0 <= index && index < shapeArr.length) {
-            for (int i = index; i < shapeArr.length - 1; i++) // shift
-                shapeArr[i] = shapeArr[i + 1];
-
-            shapeArr = Arrays.copyOf(shapeArr, shapeArr.length - 1);
-
-            return true;
-        }
+        if (0 <= index && index < shapeList.size())
+            if (shapeList.remove(index) != null) // if the shape exists
+                return true;
 
         return false;
     }
 
     public int indexOfLine(Shape s) {
-        for (int i = 0; i < shapeArr.length; i++)
-            if (shapeArr[i] == s)
-                return i;
-
-        return -1;
+       return shapeList.indexOf(s);
     }
 
     public Shape getShapeByPoint(Point p) {
-        for (Shape s : shapeArr)
+        for (Shape s : shapeList)
             if (s.hit(p))
                 return s;
 
@@ -53,7 +43,7 @@ public class PaintingArea {
     public void status() {
         int lCount = 0, cCount = 0, rCount = 0;
 
-        for (Shape s : shapeArr) {
+        for (Shape s : shapeList) {
             if (s instanceof Line)
                 lCount++;
             else if (s instanceof Circle)
