@@ -11,12 +11,13 @@ public class Main {
 
         for (int i = 0; i < shapeCount; i++) {
             Shape s = null;
+            int r = (int) (random() * 3);
 
-            if (random() * 3 == 0)
+            if (r == 0)
                 s = new Line(new Point((int) (random() * 1000), (int) (random() * 1000)), new Point((int) (random() * 1000), (int) (random() * 1000)), "Black");
-            else if (random() * 3 == 1)
+            else if (r == 1)
                 s = new Circle(new Point((int) (random() * 500), (int) (random() * 500)), (int) (random() * 100), "Black", "Yellow");
-            else if (random() * 3 == 2)
+            else if (r == 2)
                 s = new Rectangle(new Point((int) (random() * 1000), (int) (random() * 1000)), new Point((int) (random() * 1000), (int) (random() * 1000)), "Black", "Violet");
 
             paintingArea.addShape(s);
