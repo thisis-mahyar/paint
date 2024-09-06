@@ -1,4 +1,4 @@
-public class Shape {
+public abstract class Shape {
     public String name;
     public String borderColor;
     public String fillColor;
@@ -16,16 +16,11 @@ public class Shape {
         this.isFilled = false;
     }
 
-    public void draw() {
-    }
+    public abstract void draw();
 
-    public void move(int xMove, int yMove) {
-    }
+    public abstract void move(int xMove, int yMove);
 
-    public void erase() {
-    }
+    public abstract void erase();
 
-    public boolean hit(Point p) {
-        return false;
-    }
+    public abstract boolean hit(Point p);
 }
