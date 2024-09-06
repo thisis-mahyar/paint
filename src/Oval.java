@@ -23,7 +23,15 @@ public class Oval extends Shape {
     }
 
     @Override
-    public void draw(Graphics g) { // yet just a message
+    public void draw(Graphics g) {
+        if (!isFilled) {
+            g.setColor(borderColor);
+            g.drawOval(center.getX() - axis1, center.getY() - axis2, axis1 * 2, axis2 * 2);
+        } else {
+            g.setColor(fillColor);
+            g.fillOval(center.getX() - axis1, center.getY() - axis2, axis1 * 2, axis2 * 2);
+        }
+
         System.out.format("draw %s from %s with axis1 = %d, axis2 = %d.\n", name, center.toString(), axis1, axis2);
     }
 
