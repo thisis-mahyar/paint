@@ -20,7 +20,15 @@ public class Rectangle extends Shape {
     }
 
     @Override
-    public void draw(Graphics g) { // yet just a message
+    public void draw(Graphics g) {
+        if (!isFilled) {
+            g.setColor(borderColor);
+            g.drawRect(Math.min(p1.getX(), p2.getX()), Math.min(p1.getY(), p2.getY()), Math.abs(p2.getX() - p1.getX()), Math.abs(p2.getY() - p1.getY()));
+        } else {
+            g.setColor(fillColor);
+            g.fillRect(Math.min(p1.getX(), p2.getX()), Math.min(p1.getY(), p2.getY()), Math.abs(p2.getX() - p1.getX()), Math.abs(p2.getY() - p1.getY()));
+        }
+
         System.out.format("draw %s from %s to %s.\n", name, p1.toString(), p2.toString());
     }
 
