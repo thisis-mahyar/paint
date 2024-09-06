@@ -28,4 +28,43 @@ public class PaintingArea {
         rectArr[rectArr.length - 1] = r;
         r.draw();
     }
+
+    public boolean removeLine(int index) {
+        if (0 <= index && index < lineArr.length) {
+            for (int i = index; i < lineArr.length - 1; i++) // shift
+                lineArr[i] = lineArr[i + 1];
+
+            lineArr = Arrays.copyOf(lineArr, lineArr.length - 1);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean removeCircle(int index) {
+        if (0 <= index && index < lineArr.length) {
+            for (int i = index; i < circleArr.length - 1; i++) // shift
+                circleArr[i] = circleArr[i + 1];
+
+            circleArr = Arrays.copyOf(circleArr, circleArr.length - 1);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean removeRectangle(int index) {
+        if (0 <= index && index < lineArr.length) {
+            for (int i = index; i < rectArr.length - 1; i++) // shift
+                rectArr[i] = rectArr[i + 1];
+
+            rectArr = Arrays.copyOf(rectArr, rectArr.length - 1);
+
+            return true;
+        }
+
+        return false;
+    }
 }
