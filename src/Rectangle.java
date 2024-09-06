@@ -19,4 +19,28 @@ public class Rectangle {
         this.borderColor = borderColor;
         this.fillColor = fillColor;
     }
+
+    public void draw() { // yet just a message
+        System.out.format("draw %s from %s to %s.\n", name, p1.toString(), p2.toString());
+    }
+
+    public void move(int xMove, int yMove) {
+        p1.setX(p1.getX() + xMove);
+        p1.setY(p1.getY() + yMove);
+        p2.setX(p2.getX() + xMove);
+        p2.setY(p2.getY() + yMove);
+    }
+
+    public void erase() { // yet just a message
+        System.out.format("erase %s\n", name);
+    }
+
+    public boolean hit(Point p) {
+        boolean b1 = Math.min(p1.getX(), p2.getX()) <= p.getX();
+        boolean b2 = Math.max(p1.getX(), p2.getX()) >= p.getX();
+        boolean b3 = Math.min(p1.getY(), p2.getY()) <= p.getY();
+        boolean b4 = Math.max(p1.getY(), p2.getY()) >= p.getY();
+
+        return b1 && b2 && b3 && b4;
+    }
 }
