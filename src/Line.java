@@ -16,4 +16,23 @@ public class Line {
         this.name = "line-" + ((int) (Math.random() * 1000)); // a random id
         this.borderColor = borderColor;
     }
+
+    public void draw() { // yet just a message
+        System.out.format("draw %s from %s to %s.\n", name, p1.toString(), p2.toString());
+    }
+
+    public void move(int xMove, int yMove) {
+        p1.setX(p1.getX() + xMove);
+        p1.setY(p1.getY() + yMove);
+        p2.setX(p2.getX() + xMove);
+        p2.setY(p2.getY() + yMove);
+    }
+
+    public void erase() { // yet just a message
+        System.out.format("erase %s.\n", name);
+    }
+
+    public boolean hit(Point p) {
+        return p1.distance(p2) == p1.distance(p) + p2.distance(p);
+    }
 }
