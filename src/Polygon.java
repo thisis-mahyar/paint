@@ -1,2 +1,57 @@
-public class Polygon {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Polygon extends Shape {
+    public List<Point> points;
+
+    public Polygon() {
+        this.points = new ArrayList<>();
+        this.name = "polygon-" + ((int) (Math.random() * 1000)); // a random id
+        this.borderColor = "Black";
+        this.fillColor = "White";
+    }
+
+    public Polygon(List<Point> points, String borderColor, String fillColor) {
+        this.points = points;
+        this.name = "polygon-" + ((int) (Math.random() * 1000)); // a random id
+        this.borderColor = borderColor;
+        this.fillColor = fillColor;
+    }
+
+    @Override
+    public void draw() { // yet just a message
+        System.out.format("draw %s with %d points.\n", name, points.size());
+    }
+
+    @Override
+    public void move(int xMove, int yMove) {
+        for (Point point : points) {
+            point.setX(point.getX() + xMove);
+            point.setY(point.getY() + yMove);
+        }
+    }
+
+    @Override
+    public void erase() { // yet just a message
+        System.out.format("erase %s\n", name);
+    }
+
+    @Override
+    public boolean hit(Point p) {
+        // And advanced math formula
+
+        int xMin = points.get(0).getX();
+        int xMax = points.get(0).getX();
+        int yMin = points.get(0).getY();
+        int yMax = points.get(0).getY();
+
+        for (Point pp : points) {
+            xMin = Math.min(xMin, pp.getX());
+            xMax = Math.max(xMax, pp.getX());
+            yMin = Math.min(yMin, pp.getY());
+            yMax = Math.max(yMax, pp.getY());
+        }
+
+        return p.getX() <= xMax && p.getX() >= xMin && p.getY() >= yMin && p.getY() <= yMax;
+    }
 }
