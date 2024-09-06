@@ -115,4 +115,25 @@ public class PaintingArea {
 
         return null;
     }
+
+    public void moveLine(Point p, int xMove, int yMove) {
+        Line l = getLineByPoint(p);
+
+        if (l != null)
+            l.move(xMove, yMove);
+    }
+
+    public void moveCircle(Point p, int xMove, int yMove) {
+        Circle c = getCircleByPoint(p);
+
+        if (c != null)
+            c.move(xMove, yMove);
+    }
+
+    public void moveRectangle(Point p, int xMove, int yMove) {
+        Rectangle r = getRectangleByPoint(p);
+
+        if (r != null)
+            r.move(xMove, yMove);
+    }
 }
