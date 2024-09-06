@@ -20,4 +20,21 @@ public class Circle {
         this.borderColor = borderColor;
         this.fillColor = fillColor;
     }
+
+    public void draw() { // yet just a message
+        System.out.format("draw %s from %s with radius = %d.\n", name, center.toString(), radius);
+    }
+
+    public void move(int xMove, int yMove) {
+        center.setX(center.getX() + xMove);
+        center.setY(center.getY() + yMove);
+    }
+
+    public void erase() { // yet just a message
+        System.out.format("erase %s.\n", name);
+    }
+
+    public boolean hit(Point p) {
+        return center.distance(p) <= radius;
+    }
 }
