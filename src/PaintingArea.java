@@ -1,40 +1,25 @@
 import java.util.Arrays;
 
 public class PaintingArea {
-    public Line[] lineArr;
-    public Rectangle[] rectArr;
-    public Circle[] circleArr;
+    public Shape[] shapeArr;
 
     public PaintingArea() {
-        lineArr = new Line[0];
-        rectArr = new Rectangle[0];
-        circleArr = new Circle[0];
+        shapeArr = new Shape[0];
     }
 
-    public void addLine(Line l) {
-        lineArr = Arrays.copyOf(lineArr, lineArr.length + 1);
-        lineArr[lineArr.length - 1] = l;
-        l.draw();
+    public void addShape(Shape s) {
+        shapeArr = Arrays.copyOf(shapeArr, shapeArr.length + 1);
+        shapeArr[shapeArr.length - 1] = s;
+
+        s.draw();
     }
 
-    public void addCircle(Circle c) {
-        circleArr = Arrays.copyOf(circleArr, circleArr.length + 1);
-        circleArr[circleArr.length - 1] = c;
-        c.draw();
-    }
+    public boolean removeShape(int index) {
+        if (0 <= index && index < shapeArr.length) {
+            for (int i = index; i < shapeArr.length - 1; i++) // shift
+                shapeArr[i] = shapeArr[i + 1];
 
-    public void addRectangle(Rectangle r) {
-        rectArr = Arrays.copyOf(rectArr, rectArr.length + 1);
-        rectArr[rectArr.length - 1] = r;
-        r.draw();
-    }
-
-    public boolean removeLine(int index) {
-        if (0 <= index && index < lineArr.length) {
-            for (int i = index; i < lineArr.length - 1; i++) // shift
-                lineArr[i] = lineArr[i + 1];
-
-            lineArr = Arrays.copyOf(lineArr, lineArr.length - 1);
+            shapeArr = Arrays.copyOf(shapeArr, shapeArr.length - 1);
 
             return true;
         }
@@ -42,102 +27,41 @@ public class PaintingArea {
         return false;
     }
 
-    public boolean removeCircle(int index) {
-        if (0 <= index && index < lineArr.length) {
-            for (int i = index; i < circleArr.length - 1; i++) // shift
-                circleArr[i] = circleArr[i + 1];
-
-            circleArr = Arrays.copyOf(circleArr, circleArr.length - 1);
-
-            return true;
-        }
-
-        return false;
-    }
-
-    public boolean removeRectangle(int index) {
-        if (0 <= index && index < lineArr.length) {
-            for (int i = index; i < rectArr.length - 1; i++) // shift
-                rectArr[i] = rectArr[i + 1];
-
-            rectArr = Arrays.copyOf(rectArr, rectArr.length - 1);
-
-            return true;
-        }
-
-        return false;
-    }
-
-    public int indexOfLine(Line l) {
-        for (int i = 0; i < lineArr.length; i++)
-            if (lineArr[i] == l)
+    public int indexOfLine(Shape s) {
+        for (int i = 0; i < shapeArr.length; i++)
+            if (shapeArr[i] == s)
                 return i;
 
         return -1;
     }
 
-    public int indexOfCircle(Circle c) {
-        for (int i = 0; i < circleArr.length; i++)
-            if (circleArr[i] == c)
-                return i;
-
-        return -1;
-    }
-
-    public int indexOfRectangle(Rectangle r) {
-        for (int i = 0; i < rectArr.length; i++)
-            if (rectArr[i] == r)
-                return i;
-
-        return -1;
-    }
-
-    public Line getLineByPoint(Point p) {
-        for (Line l : lineArr)
-            if (l.hit(p))
-                return l;
+    public Shape getShapeByPoint(Point p) {
+        for (Shape s : shapeArr)
+            if (s.hit(p))
+                return s;
 
         return null;
     }
 
-    public Circle getCircleByPoint(Point p) {
-        for (Circle c : circleArr)
-            if (c.hit(p))
-                return c;
+    public void moveShape(Point p, int xMove, int yMove) {
+        Shape s = getShapeByPoint(p);
 
-        return null;
-    }
-
-    public Rectangle getRectangleByPoint(Point p) {
-        for (Rectangle r : rectArr)
-            if (r.hit(p))
-                return r;
-
-        return null;
-    }
-
-    public void moveLine(Point p, int xMove, int yMove) {
-        Line l = getLineByPoint(p);
-
-        if (l != null)
-            l.move(xMove, yMove);
-    }
-
-    public void moveCircle(Point p, int xMove, int yMove) {
-        Circle c = getCircleByPoint(p);
-
-        if (c != null)
-            c.move(xMove, yMove);
-    }
-
-    public void moveRectangle(Point p, int xMove, int yMove) {
-        Rectangle r = getRectangleByPoint(p);
-
-        if (r != null)
-            r.move(xMove, yMove);
+        if (s != null)
+            s.move(xMove, yMove);
     }
 
     public void status() {
-        System.out.format("Line = %d, Circle = %d, Rectangle = %d\n", lineArr.length, circleArr.length, rectArr.length);
+        int lCount = 0, cCount = 0, rCount = 0;
+
+        for (Shape s : shapeArr) {
+            if (s instanceof Line)
+                lCount++;
+            else if (s instanceof Circle)
+                cCount++;
+            else if (s instanceof Rectangle)
+                rCount++;
+        }
+
+        System.out.format("Line = %d, Circle = %d, Rectangle = %d\n", lCount, cCount, rCount);
     }
 }
