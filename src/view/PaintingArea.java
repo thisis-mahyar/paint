@@ -112,7 +112,22 @@ public class PaintingArea extends JPanel {
                                 break;
 
                             case OVAL:
+                                if (p1 == null) {
+                                    p1 = new Point(e.getX(), e.getY());
+                                } else {
+                                    p2 = new Point(e.getX(), e.getY());
+
+                                    Oval oval = new Oval(p1, Math.abs(p2.getX() - p1.getX()), Math.abs(p2.getY() - p1.getY()), menu.borderColor, menu.fillColor);
+
+                                    oval.isFilled = menu.isFilledCheckBox.isSelected();
+
+                                    shapes.add(oval);
+                                    paintComponent(getGraphics());
+
+                                    p1 = p2 = null;
+                                }
                                 break;
+
                             case POLYGON:
                                 break;
                         }
