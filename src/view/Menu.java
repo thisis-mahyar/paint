@@ -5,8 +5,13 @@ import enums.ShapeType;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Menu extends JPanel {
+    Point p1, p2, p3;
+    Color borderColor, fillColor;
+
     ShapeType currentShape = ShapeType.LINE;
     ActionType currentAction = ActionType.DRAW;
 
@@ -48,6 +53,123 @@ public class Menu extends JPanel {
         add(fillColorButton);
         add(borderColorButton);
 
+        lineButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentShape = ShapeType.LINE;
+                currentAction = ActionType.DRAW;
+                p1 = p2 = p3 = null;
+            }
+        });
+
+        rectangleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentShape = ShapeType.RECTANGLE;
+                currentAction = ActionType.DRAW;
+                p1 = p2 = p3 = null;
+            }
+        });
+
+        squareButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentShape = ShapeType.SQUARE;
+                currentAction = ActionType.DRAW;
+                p1 = p2 = p3 = null;
+            }
+        });
+
+        ovalButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentShape = ShapeType.OVAL;
+                currentAction = ActionType.DRAW;
+                p1 = p2 = p3 = null;
+            }
+        });
+
+        circleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentShape = ShapeType.CIRCLE;
+                currentAction = ActionType.DRAW;
+                p1 = p2 = p3 = null;
+            }
+        });
+
+        polygonButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentShape = ShapeType.POLYGON;
+                currentAction = ActionType.DRAW;
+                p1 = p2 = p3 = null;
+            }
+        });
+
+        triangleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentShape = ShapeType.TRIANGLE;
+                currentAction = ActionType.DRAW;
+                p1 = p2 = p3 = null;
+            }
+        });
+
+        eraseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentAction = ActionType.ERASE;
+                p1 = p2 = p3 = null;
+            }
+        });
+
+        moveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentAction = ActionType.MOVE;
+                p1 = p2 = p3 = null;
+            }
+        });
+
+        zoomInButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentAction = ActionType.ZOOM_IN;
+                p1 = p2 = p3 = null;
+            }
+        });
+
+        zoomOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentAction = ActionType.ZOOM_OUT;
+                p1 = p2 = p3 = null;
+            }
+        });
+
+        fillColorButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chooseFillColor(); // must be passed as a method, otherwise "this" wouldn't point to Form
+            }
+        });
+
+        borderColorButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chooseBorderColor(); // must be passed as a method, otherwise "this" wouldn't point to Form
+            }
+        });
+
+        setVisible(true);
     }
 
+    private void chooseFillColor() {
+        fillColor = JColorChooser.showDialog(this, "Select fill color", fillColor);
+    }
+
+    private void chooseBorderColor() {
+        borderColor = JColorChooser.showDialog(this, "Select border color", borderColor);
+    }
 }
