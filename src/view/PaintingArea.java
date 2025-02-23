@@ -1,10 +1,11 @@
 package view;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PaintingArea {
+public class PaintingArea extends JPanel {
     List<Shape> shapeList;
     Graphics g;
     int width, height;

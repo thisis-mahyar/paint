@@ -1,5 +1,7 @@
 package view;
 
-public class Frame {
+import javax.swing.*;
+
+public class Frame extends JFrame {
 
 }
