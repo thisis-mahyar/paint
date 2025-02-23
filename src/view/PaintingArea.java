@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import shapes.Line;
 import shapes.Point;
 import shapes.Shape;
 
@@ -25,7 +26,20 @@ public class PaintingArea extends JPanel {
                     case DRAW:
                         switch (menu.currentShape) {
                             case LINE:
+                                if (p1 == null) {
+                                    p1 = new Point(e.getX(), e.getY());
+                                } else {
+                                    p2 = new Point(e.getX(), e.getY());
+
+                                    Line line = new Line(p1, p2, menu.borderColor);
+
+                                    shapes.add(line);
+                                    paintComponent(getGraphics());
+
+                                    p1 = p2 = null;
+                                }
                                 break;
+
                             case RECTANGLE:
                                 break;
                             case CIRCLE:
