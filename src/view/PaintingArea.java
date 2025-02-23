@@ -258,6 +258,54 @@ public class PaintingArea extends JPanel {
                         break;
 
                     case ZOOM_OUT:
+                        p1 = new Point(e.getX(), e.getY());
+                        p2 = new Point(e.getX(), e.getY());
+
+                        s = getShapeByPoint(p1);
+
+                        if (s != null) {
+                            switch (s) {
+                                case Line line:
+                                    line.p2.setX(line.p1.getX() + (line.p2.getX() - line.p1.getX()) / 2);
+                                    line.p2.setY(line.p1.getY() + (line.p2.getY() - line.p1.getY()) / 2);
+                                    break;
+
+                                case Rectangle rectangle:
+                                    rectangle.p2.setX(rectangle.p1.getX() + (rectangle.p2.getX() - rectangle.p1.getX()) / 2);
+                                    rectangle.p2.setY(rectangle.p1.getY() + (rectangle.p2.getY() - rectangle.p1.getY()) / 2);
+                                    break;
+
+                                case Oval oval:
+                                    oval.axis1 /= 2;
+                                    oval.axis2 /= 2;
+                                    break;
+
+                                case Triangle triangle:
+                                    triangle.points.get(2).setX(triangle.points.get(1).getX() + (triangle.points.get(2).getX() - triangle.points.get(1).getX()) / 2);
+                                    triangle.points.get(2).setY(triangle.points.get(1).getY() + (triangle.points.get(2).getY() - triangle.points.get(1).getY()) / 2);
+                                    triangle.points.get(3).setX(triangle.points.get(1).getX() + (triangle.points.get(3).getX() - triangle.points.get(1).getX()) / 2);
+                                    triangle.points.get(3).setY(triangle.points.get(1).getY() + (triangle.points.get(3).getY() - triangle.points.get(1).getY()) / 2);
+                                    break;
+
+                                case Polygon polygon:
+                                    for (int i = 0; i < polygon.points.size(); i++) {
+                                        ((Polygon) s).points.get(i).setX((((Polygon) s).points.get(0).getX() + (((Polygon) s).points.get(i).getX() - ((Polygon) s).points.get(0).getX()) / 2));
+                                        ((Polygon) s).points.get(i).setY((((Polygon) s).points.get(0).getY() + (((Polygon) s).points.get(i).getY() - ((Polygon) s).points.get(0).getY()) / 2));
+                                        ((Polygon) s).points.get(i).setX(((Polygon) s).points.get(0).getX() + (((Polygon) s).points.get(i).getX() - ((Polygon) s).points.get(0).getX()) / 2);
+                                        ((Polygon) s).points.get(i).setY(((Polygon) s).points.get(0).getY() + (((Polygon) s).points.get(i).getY() - ((Polygon) s).points.get(0).getY()) / 2);
+                                    }
+                                    break;
+
+                                default:
+                                    break;
+                            }
+
+                            paintAll(getGraphics());
+                        }
+
+                        p1 = null;
+                        p2 = null;
+
                         break;
                 }
             }
