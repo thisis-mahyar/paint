@@ -95,7 +95,22 @@ public class PaintingArea extends JPanel {
                                 break;
 
                             case SQUARE:
+                                if (p1 == null) {
+                                    p1 = new Point(e.getX(), e.getY());
+                                } else {
+                                    p2 = new Point(e.getX(), e.getY());
+
+                                    Square square = new Square(p1, p2, menu.borderColor, menu.fillColor);
+
+                                    square.isFilled = menu.isFilledCheckBox.isSelected();
+
+                                    shapes.add(square);
+                                    paintComponent(getGraphics());
+
+                                    p1 = p2 = null;
+                                }
                                 break;
+
                             case OVAL:
                                 break;
                             case POLYGON:
