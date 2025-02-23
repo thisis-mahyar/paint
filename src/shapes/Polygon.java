@@ -36,7 +36,7 @@ public class Polygon extends Shape {
             g.drawPolygon(xPoints, yPoints, points.size());
         } else {
             g.setColor(fillColor);
-            g.drawPolygon(xPoints, yPoints, points.size());
+            g.fillPolygon(xPoints, yPoints, points.size());
         }
 
         System.out.format("draw %s with %d points.\n", name, points.size());
