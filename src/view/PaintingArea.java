@@ -28,6 +28,8 @@ public class PaintingArea extends JPanel {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                Shape s;
+
                 switch (menu.currentAction) {
                     case DRAW:
                         switch (menu.currentShape) {
@@ -181,7 +183,7 @@ public class PaintingArea extends JPanel {
                     case ERASE:
                         p1 = new Point(e.getX(), e.getY());
 
-                        Shape s = getShapeByPoint(p1);
+                        s = getShapeByPoint(p1);
 
                         if (s != null) {
                             shapes.remove(s);
