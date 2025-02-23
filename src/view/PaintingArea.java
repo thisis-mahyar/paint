@@ -7,8 +7,9 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import shapes.Line;
+import shapes.*;
 import shapes.Point;
+import shapes.Rectangle;
 import shapes.Shape;
 
 public class PaintingArea extends JPanel {
@@ -41,7 +42,22 @@ public class PaintingArea extends JPanel {
                                 break;
 
                             case RECTANGLE:
+                                if (p1 == null) {
+                                    p1 = new Point(e.getX(), e.getY());
+                                } else {
+                                    p2 = new Point(e.getX(), e.getY());
+
+                                    Rectangle rectangle = new Rectangle(p1, p2, menu.borderColor, menu.fillColor);
+
+                                    rectangle.isFilled = menu.isFilledCheckBox.isSelected();
+
+                                    shapes.add(rectangle);
+                                    paintComponent(getGraphics());
+
+                                    p1 = p2 = null;
+                                }
                                 break;
+
                             case CIRCLE:
                                 break;
                             case TRIANGLE:
