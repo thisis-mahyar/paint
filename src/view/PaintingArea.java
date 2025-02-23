@@ -194,7 +194,18 @@ public class PaintingArea extends JPanel {
                         break;
 
                     case MOVE:
+                        if (p1 == null) {
+                            p1 = new Point(e.getX(), e.getY());
+                        } else if (p2 == null) {
+                            p2 = new Point(e.getX(), e.getY());
+
+                            moveShape(p1, p2.getX() - p1.getX(), p2.getY() - p1.getY());
+
+                            p1 = null;
+                            p2 = null;
+                        }
                         break;
+
                     case ZOOM_IN:
                         break;
                     case ZOOM_OUT:
