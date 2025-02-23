@@ -177,8 +177,22 @@ public class PaintingArea extends JPanel {
                                 break;
                         }
                         break;
+
                     case ERASE:
+                        p1 = new Point(e.getX(), e.getY());
+
+                        Shape s = getShapeByPoint(p1);
+
+                        if (s != null) {
+                            shapes.remove(s);
+                            remove(s);
+                            paintComponent(getGraphics());
+                        }
+
+                        p1 = null;
+
                         break;
+
                     case MOVE:
                         break;
                     case ZOOM_IN:
