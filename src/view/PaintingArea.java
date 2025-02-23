@@ -2,6 +2,8 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,10 +12,45 @@ import shapes.Shape;
 
 public class PaintingArea extends JPanel {
     List<Shape> shapes;
+    private Point p1, p2, p3;
 
-    public PaintingArea() {
+    public PaintingArea(Menu menu) {
         shapes = new ArrayList<>();
         setSize(680, 600);
+
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                switch (menu.currentAction) {
+                    case DRAW:
+                        switch (menu.currentShape) {
+                            case LINE:
+                                break;
+                            case RECTANGLE:
+                                break;
+                            case CIRCLE:
+                                break;
+                            case TRIANGLE:
+                                break;
+                            case SQUARE:
+                                break;
+                            case OVAL:
+                                break;
+                            case POLYGON:
+                                break;
+                        }
+                        break;
+                    case ERASE:
+                        break;
+                    case MOVE:
+                        break;
+                    case ZOOM_IN:
+                        break;
+                    case ZOOM_OUT:
+                        break;
+                }
+            }
+        });
     }
 
     public Shape getShapeByPoint(Point p) {
