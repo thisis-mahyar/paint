@@ -232,10 +232,10 @@ public class PaintingArea extends JPanel {
                                     break;
 
                                 case Triangle triangle:
-                                    triangle.points.get(2).setX(triangle.points.get(1).getX() + (triangle.points.get(2).getX() - triangle.points.get(1).getX()) * 2);
-                                    triangle.points.get(2).setY(triangle.points.get(1).getY() + (triangle.points.get(2).getY() - triangle.points.get(1).getY()) * 2);
-                                    triangle.points.get(3).setX(triangle.points.get(1).getX() + (triangle.points.get(3).getX() - triangle.points.get(1).getX()) * 2);
-                                    triangle.points.get(3).setY(triangle.points.get(1).getY() + (triangle.points.get(3).getY() - triangle.points.get(1).getY()) * 2);
+                                    triangle.points.get(1).setX(triangle.points.get(0).getX() + (triangle.points.get(1).getX() - triangle.points.get(0).getX()) * 2);
+                                    triangle.points.get(1).setY(triangle.points.get(0).getY() + (triangle.points.get(1).getY() - triangle.points.get(0).getY()) * 2);
+                                    triangle.points.get(2).setX(triangle.points.get(0).getX() + (triangle.points.get(2).getX() - triangle.points.get(0).getX()) * 2);
+                                    triangle.points.get(2).setY(triangle.points.get(0).getY() + (triangle.points.get(2).getY() - triangle.points.get(0).getY()) * 2);
                                     break;
 
                                 case Polygon polygon:
@@ -283,10 +283,10 @@ public class PaintingArea extends JPanel {
                                     break;
 
                                 case Triangle triangle:
-                                    triangle.points.get(2).setX(triangle.points.get(1).getX() + (triangle.points.get(2).getX() - triangle.points.get(1).getX()) / 2);
-                                    triangle.points.get(2).setY(triangle.points.get(1).getY() + (triangle.points.get(2).getY() - triangle.points.get(1).getY()) / 2);
-                                    triangle.points.get(3).setX(triangle.points.get(1).getX() + (triangle.points.get(3).getX() - triangle.points.get(1).getX()) / 2);
-                                    triangle.points.get(3).setY(triangle.points.get(1).getY() + (triangle.points.get(3).getY() - triangle.points.get(1).getY()) / 2);
+                                    triangle.points.get(1).setX(triangle.points.get(0).getX() + (triangle.points.get(1).getX() - triangle.points.get(0).getX()) / 2);
+                                    triangle.points.get(1).setY(triangle.points.get(0).getY() + (triangle.points.get(1).getY() - triangle.points.get(0).getY()) / 2);
+                                    triangle.points.get(2).setX(triangle.points.get(0).getX() + (triangle.points.get(2).getX() - triangle.points.get(0).getX()) / 2);
+                                    triangle.points.get(2).setY(triangle.points.get(0).getY() + (triangle.points.get(2).getY() - triangle.points.get(0).getY()) / 2);
                                     break;
 
                                 case Polygon polygon:
