@@ -5,16 +5,21 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import shapes.*;
 import shapes.Point;
+import shapes.Polygon;
 import shapes.Rectangle;
 import shapes.Shape;
 
 public class PaintingArea extends JPanel {
     List<Shape> shapes;
     private Point p1, p2, p3;
+
+    private ArrayList<Integer> xs = new ArrayList<>();
+    private ArrayList<Integer> ys = new ArrayList<>();
 
     public PaintingArea(Menu menu) {
         shapes = new ArrayList<>();
@@ -129,6 +134,46 @@ public class PaintingArea extends JPanel {
                                 break;
 
                             case POLYGON:
+                                if (p1 == null) {
+                                    p1 = new Point(e.getX(), e.getY());
+
+                                    // for the beginning point and tolerance
+                                    Circle circle = new Circle(p1, 5, Color.BLACK, Color.BLACK);
+                                    shapes.add(circle);
+                                    paintComponent(getGraphics());
+
+                                    xs.add(p1.getX());
+                                    ys.add(p1.getY());
+                                } else {
+                                    p2 = new Point(e.getX(), e.getY());
+
+                                    if (Math.abs(p2.getX() - xs.getLast()) < 10 && Math.abs(p2.getY() - ys.getLast()) < 10) {
+                                        Point[] points = new Point[xs.size()];
+
+                                        for (int i = 0; i < xs.size(); i++) {
+                                            points[i] = new Point();
+                                            points[i].setX(xs.get(i));
+                                            points[i].setY(ys.get(i));
+                                        }
+
+                                        Polygon polygon = new Polygon(Arrays.stream(points).toList(), menu.borderColor, menu.fillColor);
+
+                                        polygon.isFilled = menu.isFilledCheckBox.isSelected();
+
+                                        shapes.add(polygon);
+                                        paintComponent(getGraphics());
+
+                                        xs.clear();
+                                        ys.clear();
+
+                                        p1 = p2 = null;
+                                    } else {
+                                        xs.add(p2.getX());
+                                        ys.add(p2.getY());
+
+                                        p2 = null;
+                                    }
+                                }
                                 break;
                         }
                         break;
