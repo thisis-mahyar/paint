@@ -76,7 +76,24 @@ public class PaintingArea extends JPanel {
                                 break;
 
                             case TRIANGLE:
+                                if (p1 == null) {
+                                    p1 = new Point(e.getX(), e.getY());
+                                } else if (p2 == null) {
+                                    p2 = new Point(e.getX(), e.getY());
+                                } else {
+                                    p3 = new Point(e.getX(), e.getY());
+
+                                    Triangle triangle = new Triangle(p1, p2, p3, menu.borderColor, menu.fillColor);
+
+                                    triangle.isFilled = menu.isFilledCheckBox.isSelected();
+
+                                    shapes.add(triangle);
+                                    paintComponent(getGraphics());
+
+                                    p1 = p2 = p3 = null;
+                                }
                                 break;
+
                             case SQUARE:
                                 break;
                             case OVAL:
