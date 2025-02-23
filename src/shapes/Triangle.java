@@ -17,9 +17,4 @@ public class Triangle extends Polygon {
         this.borderColor = borderColor;
         this.fillColor = fillColor;
     }
-
-    @Override
-    public void draw(Graphics g) { // yet just a message
-        System.out.format("draw %s with points: %s, %s, %s.\n", name, points.get(0).toString(), points.get(1).toString(), points.get(2).toString());
-    }
 }

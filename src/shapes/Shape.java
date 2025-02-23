@@ -1,8 +1,9 @@
 package shapes;
 
+import javax.swing.*;
 import java.awt.*;
 
-public abstract class Shape {
+public abstract class Shape extends JComponent {
     public String name;
     public Color borderColor;
     public Color fillColor;
@@ -20,7 +21,8 @@ public abstract class Shape {
         this.isFilled = false;
     }
 
-    public abstract void draw(Graphics g);
+    @Override
+    public abstract void paintComponent(Graphics g);
 
     public abstract void move(int xMove, int yMove);
 
