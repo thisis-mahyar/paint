@@ -59,7 +59,22 @@ public class PaintingArea extends JPanel {
                                 break;
 
                             case CIRCLE:
+                                if (p1 == null) {
+                                    p1 = new Point(e.getX(), e.getY());
+                                } else {
+                                    p2 = new Point(e.getX(), e.getY());
+
+                                    Circle circle = new Circle(p1, (int) p1.distance(p2), menu.borderColor, menu.fillColor);
+
+                                    circle.isFilled = menu.isFilledCheckBox.isSelected();
+
+                                    shapes.add(circle);
+                                    paintComponent(getGraphics());
+
+                                    p1 = p2 = null;
+                                }
                                 break;
+
                             case TRIANGLE:
                                 break;
                             case SQUARE:
