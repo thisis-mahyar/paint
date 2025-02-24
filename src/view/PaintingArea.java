@@ -188,7 +188,7 @@ public class PaintingArea extends JPanel {
                         if (s != null) {
                             shapes.remove(s);
                             remove(s);
-                            paintComponent(getGraphics());
+                            redrawAll(getGraphics());
                         }
 
                         p1 = null;
@@ -251,7 +251,7 @@ public class PaintingArea extends JPanel {
                                     break;
                             }
 
-                            paintComponent(getGraphics());
+                            redrawAll(getGraphics());
                         }
 
                         p1 = null;
@@ -302,7 +302,7 @@ public class PaintingArea extends JPanel {
                                     break;
                             }
 
-                            paintComponent(getGraphics());
+                            redrawAll(getGraphics());
                         }
 
                         p1 = null;
@@ -327,12 +327,11 @@ public class PaintingArea extends JPanel {
 
         if (s != null) {
             s.move(xMove, yMove);
-            paintComponent(getGraphics());
+            redrawAll(getGraphics());
         }
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
+    protected void redrawAll(Graphics g) {
         super.paintComponent(g); // clears the background
 
         for (Shape shape : shapes)
