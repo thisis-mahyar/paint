@@ -42,7 +42,7 @@ public class PaintingArea extends JPanel {
                                     Line line = new Line(p1, p2, menu.borderColor);
 
                                     shapes.add(line);
-                                    paintComponent(getGraphics());
+                                    line.draw(getGraphics());
 
                                     p1 = p2 = null;
                                 }
@@ -59,7 +59,7 @@ public class PaintingArea extends JPanel {
                                     rectangle.isFilled = menu.isFilledCheckBox.isSelected();
 
                                     shapes.add(rectangle);
-                                    paintComponent(getGraphics());
+                                    rectangle.draw(getGraphics());
 
                                     p1 = p2 = null;
                                 }
@@ -76,7 +76,7 @@ public class PaintingArea extends JPanel {
                                     circle.isFilled = menu.isFilledCheckBox.isSelected();
 
                                     shapes.add(circle);
-                                    paintComponent(getGraphics());
+                                    circle.draw(getGraphics());
 
                                     p1 = p2 = null;
                                 }
@@ -95,7 +95,7 @@ public class PaintingArea extends JPanel {
                                     triangle.isFilled = menu.isFilledCheckBox.isSelected();
 
                                     shapes.add(triangle);
-                                    paintComponent(getGraphics());
+                                    triangle.draw(getGraphics());
 
                                     p1 = p2 = p3 = null;
                                 }
@@ -112,7 +112,7 @@ public class PaintingArea extends JPanel {
                                     square.isFilled = menu.isFilledCheckBox.isSelected();
 
                                     shapes.add(square);
-                                    paintComponent(getGraphics());
+                                    square.draw(getGraphics());
 
                                     p1 = p2 = null;
                                 }
@@ -129,7 +129,7 @@ public class PaintingArea extends JPanel {
                                     oval.isFilled = menu.isFilledCheckBox.isSelected();
 
                                     shapes.add(oval);
-                                    paintComponent(getGraphics());
+                                    oval.draw(getGraphics());
 
                                     p1 = p2 = null;
                                 }
@@ -142,7 +142,7 @@ public class PaintingArea extends JPanel {
                                     // for the beginning point and tolerance
                                     Circle circle = new Circle(p1, 5, Color.BLACK, Color.BLACK);
                                     shapes.add(circle);
-                                    paintComponent(getGraphics());
+                                    circle.draw(getGraphics());
 
                                     xs.add(p1.getX());
                                     ys.add(p1.getY());
@@ -163,7 +163,7 @@ public class PaintingArea extends JPanel {
                                         polygon.isFilled = menu.isFilledCheckBox.isSelected();
 
                                         shapes.add(polygon);
-                                        paintComponent(getGraphics());
+                                        polygon.draw(getGraphics());
 
                                         xs.clear();
                                         ys.clear();
@@ -336,6 +336,6 @@ public class PaintingArea extends JPanel {
         super.paintComponent(g); // clears the background
 
         for (Shape shape : shapes)
-            shape.paintComponent(g);
+            shape.draw(g);
     }
 }
