@@ -22,7 +22,7 @@ public class Polygon extends Shape {
     }
 
     @Override
-    public void paintComponent(Graphics g) {
+    public void draw(Graphics g) {
         int[] xPoints = new int[points.size()];
         int[] yPoints = new int[points.size()];
 

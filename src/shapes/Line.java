@@ -20,7 +20,7 @@ public class Line extends Shape {
     }
 
     @Override
-    public void paintComponent(Graphics g) {
+    public void draw(Graphics g) {
         g.setColor(borderColor);
         g.drawLine(p1.getX(), p1.getY(), p2.getX(), p2.getY());
         System.out.format("draw %s from %s to %s.\n", name, p1.toString(), p2.toString());

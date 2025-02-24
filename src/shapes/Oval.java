@@ -25,7 +25,7 @@ public class Oval extends Shape {
     }
 
     @Override
-    public void paintComponent(Graphics g) {
+    public void draw(Graphics g) {
         if (!isFilled) {
             g.setColor(borderColor);
             g.drawOval(center.getX() - axis1, center.getY() - axis2, axis1 * 2, axis2 * 2);

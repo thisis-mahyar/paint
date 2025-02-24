@@ -21,8 +21,7 @@ public abstract class Shape extends JComponent {
         this.isFilled = false;
     }
 
-    @Override
-    public abstract void paintComponent(Graphics g);
+    public abstract void draw(Graphics g);
 
     public abstract void move(int xMove, int yMove);
 

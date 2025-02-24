@@ -22,7 +22,7 @@ public class Rectangle extends Shape {
     }
 
     @Override
-    public void paintComponent(Graphics g) {
+    public void draw(Graphics g) {
         if (!isFilled) {
             g.setColor(borderColor);
             g.drawRect(Math.min(p1.getX(), p2.getX()), Math.min(p1.getY(), p2.getY()), Math.abs(p2.getX() - p1.getX()), Math.abs(p2.getY() - p1.getY()));
