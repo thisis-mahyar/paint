@@ -188,6 +188,7 @@ public class PaintingArea extends JPanel {
                         if (s != null) {
                             shapes.remove(s);
                             remove(s);
+                            s.erase();
                             redrawAll(getGraphics());
                         }
 
