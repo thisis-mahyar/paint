@@ -251,7 +251,7 @@ public class PaintingArea extends JPanel {
                                     break;
                             }
 
-                            paintAll(getGraphics());
+                            paintComponent(getGraphics());
                         }
 
                         p1 = null;
@@ -302,7 +302,7 @@ public class PaintingArea extends JPanel {
                                     break;
                             }
 
-                            paintAll(getGraphics());
+                            paintComponent(getGraphics());
                         }
 
                         p1 = null;
