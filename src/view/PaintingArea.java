@@ -27,7 +27,7 @@ public class PaintingArea extends JPanel {
 
         addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mousePressed(MouseEvent e) {
                 Shape s;
 
                 switch (menu.currentAction) {
